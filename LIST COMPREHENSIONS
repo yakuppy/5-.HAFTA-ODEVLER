@@ -1,0 +1,27 @@
+'''** ODEV
+3: LIST
+COMPREHENSIONS
+
+# İki liste tanımlayın.
+# İlk liste 1'den 10'a kadar sayılardan oluşturun.
+# İkinci listeyi sırasıyla a'dan başlayarak 10 harf ile oluşturun.
+# İki liste için de döngü kurup, iki listenin elemanlarının bütün kombinasyonlarından oluşan iki yeni liste oluşturun.
+# bu islemler LIST COMPREHENSIONS METODU  kullanilarak yapilacaktir
+# 3'er elemanli versiyonunda cıktı olarak bu şekilde bir çıktı beklenmektedir:
+
+# 1. [1a, 1b, 1c, 2a, 2b, 2c, 3a, 3b, 3c]
+# 2. [a1, a2, a3, b1, b2, b3, c1, c2, c3]'''
+
+rakam=list(range(1,10))
+
+
+harf = list("abcdefghik")
+
+
+
+liste1=[str(a)+i for a in rakam  for i in harf ]
+
+liste2=[i+str(a) for i in harf for a in rakam ]
+
+print(liste1)
+print(liste2)
