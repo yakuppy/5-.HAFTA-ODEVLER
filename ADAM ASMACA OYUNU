@@ -1,0 +1,116 @@
+
+'''
+*ODEV 1: ADAM ASMACA*
+  -Ekli listedeki ulkeler random modulu programa eklenerek random.choice kullanilarak degiskene atanacak ve kullanicidan bu ulkeyi harf tahminleriyle bilmesi istenecek.
+  -Kullanicinin 6 hamle sansi olacak ve her bir yanlis hamlesinde kalan hamle sayisini gosterin. Ayrica yine her bir yanlis hamle sonucunda adam asmaca oyunu oynarken cizdigimiz yanlis hamle sonucundaki cizimleri sizde ekranda karakterleri kullanarak gosterin.
+  -Kullanici harf disinda bir karakter girdiginde gerekli uyariyi yapin ve bunu da yanlis hamle olarak saymayin. Oyun devam etsin.
+  -Bir yanlis ve bir dogru hamle yapilmis ornek kod ciktisi:
+
+                           ____
+                          |       |
+                          |      O           5 HAKKINIZ KALDI!!!
+                          |
+                          |
+                         ---
+
+           - a -  -  -  - a -'''
+
+print(".....ADAM ASMACA OYUNUNA HOSGELDINIZ......")
+with open("ulkeler","r+",encoding="utf-8") as file:
+        ulkeler=file.readlines()#ulkeler liste modunda okunuyor
+        import random #random kullanmak icin cagirmamiz gerekiyor
+        yeni=random.choice(ulkeler)#ulkelerden herhangi birini seciyor
+        ulke_ismi=yeni.lower()#sectigimiz ulkenin tum harfleri kucultuluyor
+        ulke_ismi.strip()#listemizden gelen ulke isminin sag sol bosluklarini sliyoruz
+
+
+        liste = []#bos bir liste acatak ulke ismimizin uzunlugu kadar - karakterini dolduruyoruz
+        for i in range(len(ulke_ismi) - 1):
+            liste.append("-")
+        print(*liste)
+        b=-1
+
+        while True:
+
+            tahmin = input("bir harf tahmin ediniz")
+            if tahmin in ulke_ismi:
+                a = 0
+                for i in ulke_ismi:
+                    if i == tahmin:
+                        liste[a] = tahmin
+                        a += 1
+                    else:
+                        a += 1
+            print(*liste)
+
+
+            kalan_hak = ('''
+                             |------|
+                             |      O
+                             |      
+                             |            5 HAKKINIZ KALDI!!!
+                             |
+                             |
+                            --- ''',
+                         '''
+                        |------|
+                        |      O
+                        |      |
+                        |            4 HAKKINIZ KALDI!!!
+                        |
+                        |
+                       --- ''',
+                         '''
+                        |------|
+                        |      O
+                        |     /|
+                        |            3 HAKKINIZ KALDI!!!
+                        |
+                        |
+                       --- ''',
+                         '''
+                        |------|
+                        |      O
+                        |     /|\\    2 HAKKINIZ KALDI!!! 
+                        |          
+                        |
+                        |
+                       --- ''',
+                         '''
+                        |------|
+                        |      O
+                        |     /|\\    1 HAKKINIZ KALDI!!!
+                        |     /
+                        |
+                        |
+                       --- ''',
+                         '''
+                        |------|
+                        |      O
+                        |     /|\\     OYUNU KAYBETTINIZ!!!
+                        |     / \\
+                        |
+                        |
+                       --- ''')
+            if b==4:
+                print(kalan_hak[5])
+                print("TAHMIN EDEMEDIGINIZ ULKENIN ISMI :****", ulke_ismi.strip().upper() + "*******")
+                break
+
+            if not tahmin in ulke_ismi :
+
+                b += 1
+
+                print(kalan_hak[0 + b])
+
+
+
+
+
+
+
+
+
+
+
+
