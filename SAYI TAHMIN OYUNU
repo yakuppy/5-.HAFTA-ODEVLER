@@ -1,0 +1,57 @@
+'''*ODEV 2:SAYI TAHMIN OYUNU:*
+  Kendiniz 4 basamakli, rakamlari birbirinden farkli ve icerisinde 0 rakaminin yer almadigi bir sayi belirleyin. Kullanicidan bu sayiyi tahmin etmesini isteyin. Yapilan tahmin sonucu kullanicinin, tahminde bulundugu sayidaki rakamlarin degeri ve yeri dogruysa +1, degeri dogru fakat yeri dogru degilse -1 ciktisi verecegiz. Bu sekilde tahminde bulunmaya devam etmesi saglanacak ve sayiyi tam bir sekilde dogru bildiginde gerekli bilgilendirme yapilip oyun bitirilecek.
+
+   Ornek:           sayi = 1234
+
+          yapilan tahmin = 9831
+
+          (Burada "9" ve "8" rakamlari yanlis oldugu icin ciktiya bir etkisi yok. "3" rakaminin yeri dogru oldugu icin +1, "1" rakami sayi icerisinde yer alan fakat yeri yanlis oldugu icin -1 ciktisi verecegiz.)
+
+          ornek output = +1 -1
+
+          yapilan tahmin = 2134
+
+          ("2" ve "1" rakamlari sayi icerisinde yer aldigi fakat yerlerinin yanlis olmasi nedeniyle ikisi icin -1, "3" ve "4" rakamlarinin yerleri de dogru oldugu icin +1 degerleri donecegiz.)
+
+          ornek output = +2 -2
+          yapilan tahmin = 9876
+          ornek output = +0 -0
+          yapilan tahmin = 2146
+          ornek output = +0 -3'''
+
+
+
+
+sayi="1453"
+sayi_liste=list(sayi)#karakter dizisini liste haline ciriyoruz
+
+
+while True:
+
+    tahmin=input("icerisinde sifir olmayan 4 haneli bir sayi tahmin ediniz   :")
+    tahmin_liste=list(tahmin)#gelen tahminde listeye cevriliyor
+    k=0#pozotf durum icin donguye sayac sokuluyor
+    a=0#negatif durum icin donguye sayac sokluyor
+    for i in tahmin_liste:#tahmin edilen sayi rakamlari donguye sokuluyor
+
+        if i in sayi_liste:
+            konum=sayi_liste.index(i)# sayi icerisindeki rakamin konumu belirleniyor
+            konum2=tahmin_liste.index(i)#tahmin icerisindeki rakamn konumu belirleniyor
+
+            if    konum==konum2:#sayi ve rakamin konumu esitse sayacimiz 1 artiyor
+                k+=1
+
+            if k == 4:#pozitif sayac sayimizin rakam sayisina esit odugunda hersey yolunda
+                print("tahmininiz dogrudur tebrikler")
+                quit()
+
+
+
+            if  not konum==konum2:#sayi ve rakamin konumu esit degilse sayacimiz 1 aazaliyor
+                a-=1
+
+    print(k, a)
+
+
+
+
